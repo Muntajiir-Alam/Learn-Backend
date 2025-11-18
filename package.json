@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Muntajiir-Alam/BACKEND#readme",
+  "bugs": {
+    "url": "https://github.com/Muntajiir-Alam/BACKEND/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muntajiir-Alam/BACKEND.git"
+  },
+  "license": "ISC",
+  "author": "Muntajir Alam <",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
