@@ -2,19 +2,23 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/Muntajiir-Alam/BACKEND#readme",
-  "bugs": {
-    "url": "https://github.com/Muntajiir-Alam/BACKEND/issues"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Muntajiir-Alam/BACKEND.git"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "author": "Muntajir Alam <",
   "type": "commonjs",
-  "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/Muntajiir-Alam/BACKEND/issues"
+  },
+  "homepage": "https://github.com/Muntajiir-Alam/BACKEND#readme",
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
