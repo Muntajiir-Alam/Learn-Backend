@@ -1,53 +1,49 @@
 const express = require("express");
+const noteModel = require("./models/note.model");
 const app = express();
 
 app.use(express.json());
 
 // title , description
-const notes = [];
+
 //add
-app.post("/notes", (req, res) => {
-    notes.push(req.body)
+app.post("/notes", async (req, res) => {
+    const { title, description } = req.body;
+    const note = await noteModel.create({ title, description });
     res.status(201).json({
-        message : "note crated successfully"
-    })
+        message: "note crated successfully",
+        note
+    });
 });
 
 // delete
-app.delete("/notes/:id", (req, res) => {
+app.delete("/notes/:id", async (req, res) => {
     const id = req.params.id;
-    const index = notes.findIndex(note => note.id === id);
-    if (index !== -1) {
-        notes.splice(index, 1);
-        res.status(200).json({
-            message: "Note deleted successfully"
-        });
-    } else {
-        res.status(404).json({
-            message: "Note not found"
-        });
-    }
+    await noteModel.findByIdAndDelete(id);
+    res.status(200).json({
+        message: "Note deleted successfully",
+    });
 });
 
 // get all notes
-app.get("/notes", (req, res) => {
+app.get("/notes", async (req, res) => {
+    const notes = await noteModel.find();
     res.status(200).json(notes);
 });
 
 // edit
-app.put("/notes/:id", (req, res) => {
+app.patch("/notes/:id", async (req, res) => {
     const id = req.params.id;
-    const index = notes.findIndex(note => note.id === id);
-    if (index !== -1) {
-        notes[index] = req.body;
-        res.status(200).json({
-            message: "Note updated successfully"
-        });
-    } else {
-        res.status(404).json({
-            message: "Note not found"
+    const note = await noteModel.findByIdAndUpdate(id, req.body, { new: true });
+    if (!note) {
+        return res.status(404).json({
+            message: "Note not found",
         });
     }
+    res.status(200).json({
+        message: "Note updated successfully",
+        note
+    });
 });
 
 module.exports = app;
